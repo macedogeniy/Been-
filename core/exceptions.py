@@ -176,3 +176,8 @@ class TimeFrameSyncError(SynchronizationError):
 class DataAlignmentError(SynchronizationError):
     """Ошибка выравнивания данных"""
     pass
+
+
+class TradingBotError(TradingSystemError):
+    """Ошибка торгового бота"""
+    pass
