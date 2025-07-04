@@ -1,0 +1,18 @@
+{
+  "total_pnl": 2450.75,
+  "pnl_change_24h": 125.5,
+  "win_rate": 68.4,
+  "win_rate_change": 2.1,
+  "total_trades": 156,
+  "trades_today": 3,
+  "current_drawdown": 4.2,
+  "drawdown_change": -0.8,
+  "active_signals": 2,
+  "new_signals": 1,
+  "total_return": 15.6,
+  "profit_factor": 1.85,
+  "max_drawdown": 7.2,
+  "sharpe_ratio": 1.42,
+  "avg_profit": 125.3,
+  "avg_loss": -68.2
+}
