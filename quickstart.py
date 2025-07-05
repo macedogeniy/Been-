@@ -131,9 +131,10 @@ def show_menu() -> str:
     print("   4. Запустить веб-дашборд (run_dashboard.py)")
     print("   5. Запустить визуализацию (visualization_demo.py)")
     print("   6. Запустить все тесты")
-    print("   7. Выход")
+    print("   7. Валидация системы (validate_system.py)")
+    print("   8. Выход")
     
-    return input("\nВаш выбор (1-7): ").strip()
+    return input("\nВаш выбор (1-8): ").strip()
 
 
 def run_script(script_name: str, description: str) -> bool:
@@ -280,12 +281,14 @@ def main():
         elif choice == "6":
             run_tests()
         elif choice == "7":
+            run_script("validate_system.py", "Валидация системы")
+        elif choice == "8":
             print("\n👋 До свидания!")
             break
         else:
             print("❌ Неверный выбор. Попробуйте снова.")
         
-        if choice != "7":
+        if choice != "8":
             input("\nНажмите Enter для продолжения...")
 
 
