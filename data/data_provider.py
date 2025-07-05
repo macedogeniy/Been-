@@ -425,3 +425,7 @@ class ExchangeDataProvider(IDataProvider):
             'memory_usage_mb': total_size * 8 * 6 / (1024 * 1024),  # Примерная оценка
             'cache_hit_ratio': getattr(self, '_cache_hits', 0) / getattr(self, '_cache_requests', 1)
         }
+
+
+# Alias for compatibility
+DataProvider = ExchangeDataProvider

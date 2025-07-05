@@ -3,7 +3,8 @@
 """
 
 from typing import Dict, List, Optional, Union
-from pydantic import BaseSettings, Field, validator
+from pydantic import Field, validator
+from pydantic_settings import BaseSettings
 from pathlib import Path
 import os
 
@@ -217,6 +218,9 @@ class SystemConfig(BaseSettings):
 
 # Глобальный экземпляр конфигурации
 config = SystemConfig()
+
+# Alias for compatibility
+Config = SystemConfig
 
 # Функции для удобного доступа к конфигурации
 def get_config() -> SystemConfig:

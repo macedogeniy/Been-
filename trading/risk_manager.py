@@ -528,3 +528,7 @@ class LiquidityHuntRiskManager(IRiskManager):
         except Exception as e:
             logger.error(f"Ошибка экстренного закрытия позиций: {e}")
             return False
+
+
+# Alias for compatibility
+RiskManager = LiquidityHuntRiskManager

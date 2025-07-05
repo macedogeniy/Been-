@@ -28,6 +28,7 @@ cython==3.0.6
 
 # Configuration and logging
 pydantic==2.5.2
+pydantic-settings==2.10.1
 loguru==0.7.2
 python-dotenv==1.0.0
 pyyaml==6.0.1
@@ -60,3 +61,4 @@ secure-smtplib==0.1.1
 # Additional dependencies for production
 gunicorn==21.2.0
 uvicorn==0.24.0
+websockets==15.0.1

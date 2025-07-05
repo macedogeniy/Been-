@@ -760,3 +760,7 @@ class LiquidityHuntSignalGenerator(ISignalGenerator):
         except Exception as e:
             logger.error(f"Ошибка расчета медвежьих уровней: {e}")
             return (current_price, current_price * 1.02, current_price * 0.96)
+
+
+# Alias for compatibility
+SignalGenerator = LiquidityHuntSignalGenerator
