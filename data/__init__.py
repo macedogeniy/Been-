@@ -3,5 +3,4 @@
 """
 
 from .data_provider import *
-from .data_storage import *
-from .data_synchronizer import *
+from .historical_data_fetcher import *
