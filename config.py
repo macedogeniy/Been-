@@ -145,25 +145,66 @@ class LoggingConfig(BaseSettings):
         env_prefix = "LOGGING_"
 
 
+class VisualizationConfig(BaseSettings):
+    """Настройки визуализации"""
+    chart_width: int = Field(1200, ge=800, le=2000)
+    chart_height: int = Field(800, ge=600, le=1200)
+    theme: str = "plotly_dark"
+    host: str = "localhost"
+    port: int = Field(8501, ge=8000, le=9999)
+    debug: bool = False
+    
+    class Config:
+        env_prefix = "VIZ_"
+
+
+class AlertConfig(BaseSettings):
+    """Настройки уведомлений"""
+    # Email уведомления
+    email_enabled: bool = False
+    email_smtp_server: str = "smtp.gmail.com"
+    email_smtp_port: int = 587
+    email_username: str = "your_email@gmail.com"
+    email_password: str = "your_app_password"
+    email_from: str = "your_email@gmail.com"
+    email_to: str = "your_email@gmail.com"
+    
+    # Telegram уведомления
+    telegram_enabled: bool = False
+    telegram_bot_token: str = "your_bot_token"
+    telegram_chat_id: str = "your_chat_id"
+    
+    # Webhook уведомления
+    webhook_enabled: bool = False
+    webhook_url: str = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+    
+    class Config:
+        env_prefix = "ALERT_"
+
+
 class SystemConfig(BaseSettings):
     """Основная конфигурация системы"""
     
-    # Подконфигурации
-    exchange: ExchangeConfig = ExchangeConfig()
-    trading: TradingConfig = TradingConfig()
-    strategy: StrategyConfig = StrategyConfig()
-    backtest: BacktestConfig = BacktestConfig()
-    data: DataConfig = DataConfig()
-    logging: LoggingConfig = LoggingConfig()
+    # Подконфигурации - используем Field с default_factory для правильной инициализации
+    exchange: ExchangeConfig = Field(default_factory=ExchangeConfig)
+    trading: TradingConfig = Field(default_factory=TradingConfig)
+    strategy: StrategyConfig = Field(default_factory=StrategyConfig)
+    backtest: BacktestConfig = Field(default_factory=BacktestConfig)
+    data: DataConfig = Field(default_factory=DataConfig)
+    logging: LoggingConfig = Field(default_factory=LoggingConfig)
+    visualization: VisualizationConfig = Field(default_factory=VisualizationConfig)
+    alerts: AlertConfig = Field(default_factory=AlertConfig)
     
     # Общие настройки системы
     debug_mode: bool = False
     enable_profiling: bool = False
+    max_memory_usage: int = Field(4096, ge=1024, le=16384)  # MB
     
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = False
+        extra = "ignore"  # Игнорируем дополнительные поля
     
     def __post_init__(self):
         """Создание необходимых директорий"""
